@@ -3,23 +3,26 @@ package com.practice.instagramcomposesample
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.practice.instagramcomposesample.destinations.Screen2Destination
-import com.practice.instagramcomposesample.destinations.Screen3Destination
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import com.practice.instagramcomposesample.destinations.MainScreenDestination
 import com.practice.instagramcomposesample.ui.theme.InstagramComposeSampleTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +30,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             InstagramComposeSampleTheme {
                 DestinationsNavHost(navGraph = NavGraphs.root)
+
             }
         }
     }
@@ -34,46 +38,28 @@ class MainActivity : ComponentActivity() {
 
 @Destination(start = true)
 @Composable
-fun Screen1(navigator: DestinationsNavigator) {
-    Column(
+fun SplashScreen(navigator: DestinationsNavigator) {
+    Box(
         modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
+        contentAlignment = Alignment.Center
     ) {
-        Text("Screen 1")
-        Button(onClick = {
-            navigator.navigate(Screen2Destination)
-        }) {
-            Text("Go to Screen 2")
-        }
+        Image(
+            painter = painterResource(id = R.drawable.instagram_logo),
+            contentDescription = "Splash"
+        )
+    }
+    LaunchedEffect(Unit) {
+        delay(3000)
+        navigator.popBackStack()
+        navigator.navigate(MainScreenDestination)
     }
 }
 
 @Destination
 @Composable
-fun Screen2(navigator: DestinationsNavigator) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text("Screen 2")
-        Button(onClick = {
-            navigator.navigate(Screen3Destination)
-        }) {
-            Text("Go to Screen 3")
-        }
-    }
-}
-
-@Destination
-@Composable
-fun Screen3(navigator: DestinationsNavigator) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
-    ) {
-        Text(text = "Screen 3")
-    }
+fun MainScreen(navigator: DestinationsNavigator) {
+    Text(
+        text = "Hello, Main Screen!",
+        modifier = Modifier.padding(16.dp)
+    )
 }
