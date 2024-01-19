@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
@@ -21,6 +20,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.practice.instagramcomposesample.ui.components.InstaTextFieldEmail
+import com.practice.instagramcomposesample.ui.components.InstaTextFieldPassword
 import com.practice.instagramcomposesample.ui.splash.InstagramLogo
 import com.practice.instagramcomposesample.ui.theme.InstagramComposeSampleTheme
 import com.ramcosta.composedestinations.annotation.Destination
@@ -37,21 +38,13 @@ fun LoginScreen(navigator: DestinationsNavigator) {
     ) {
         InstagramLogo()
         Spacer(modifier = Modifier.height(42.dp))
-        //todo customize email textfield
-        TextField(
-            value = "",
-            placeholder = { Text("Enter your Email") },
-            onValueChange = { },
+        InstaTextFieldEmail(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 30.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
-        //todo customize password textfield
-        TextField(
-            value = "",
-            placeholder = { Text("Enter your Password") },
-            onValueChange = { },
+        InstaTextFieldPassword(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 30.dp)

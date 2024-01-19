@@ -15,6 +15,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
+//<style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+//    <item name="colorPrimary">@color/colorPrimary</item>
+//    <item name="colorPrimaryDark">@color/colorPrimary</item>
+//    <item name="colorSecondary">@color/colorSecondary</item>
+//    <item name="colorAccent">@color/colorAccent</item>
+//    <item name="android:fontFamily">@font/roboto</item>
+//    <item name="fontFamily">@font/roboto_regular</item>
+//    <item name="android:background">@color/white</item>
+//    <item name="android:textColorPrimary">@color/black</item>
+//</style>
+
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
     secondary = PurpleGrey80,
