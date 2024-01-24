@@ -1,4 +1,4 @@
-package com.practice.instagramcomposesample.ui.login
+package com.practice.instagramcomposesample.ui.register
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,8 +27,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.practice.instagramcomposesample.R
 import com.practice.instagramcomposesample.ui.components.InstaTextFieldEmail
+import com.practice.instagramcomposesample.ui.components.InstaTextFieldName
 import com.practice.instagramcomposesample.ui.components.InstaTextFieldPassword
+import com.practice.instagramcomposesample.ui.destinations.LoginScreenDestination
 import com.practice.instagramcomposesample.ui.destinations.RegisterScreenDestination
+import com.practice.instagramcomposesample.ui.login.LoginScreen
 import com.practice.instagramcomposesample.ui.splash.InstagramLogo
 import com.practice.instagramcomposesample.ui.theme.InstagramComposeSampleTheme
 import com.ramcosta.composedestinations.annotation.Destination
@@ -37,7 +40,7 @@ import com.ramcosta.composedestinations.navigation.EmptyDestinationsNavigator
 
 @Destination
 @Composable
-fun LoginScreen(navigator: DestinationsNavigator) {
+fun RegisterScreen(navigator: DestinationsNavigator) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -45,6 +48,12 @@ fun LoginScreen(navigator: DestinationsNavigator) {
     ) {
         InstagramLogo()
         Spacer(modifier = Modifier.height(42.dp))
+        InstaTextFieldName(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 30.dp)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
         InstaTextFieldEmail(
             modifier = Modifier
                 .fillMaxWidth()
@@ -68,19 +77,19 @@ fun LoginScreen(navigator: DestinationsNavigator) {
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.blue))
         ) {
             Text(
-                text = "LOGIN", modifier = Modifier
+                text = "SIGN UP", modifier = Modifier
                     .padding(vertical = 6.dp), fontSize = 16.sp,
                 fontWeight = FontWeight.Bold
             )
         }
         HorizontalLinesWithText()
         Text(
-            text = "Sign Up with Email",
+            text = "Login with Email",
             modifier = Modifier
                 .padding(top = 20.dp)
                 .clickable {
                     navigator.popBackStack()
-                    navigator.navigate(RegisterScreenDestination)
+                    navigator.navigate(LoginScreenDestination)
                 }, fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
             color = colorResource(id = R.color.blue)
@@ -130,7 +139,7 @@ fun SimpleComposablePreview() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            LoginScreen(navigator = EmptyDestinationsNavigator)
+            RegisterScreen(navigator = EmptyDestinationsNavigator)
         }
     }
 }
